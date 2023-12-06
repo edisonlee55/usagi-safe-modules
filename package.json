@@ -2,10 +2,12 @@
   "name": "usagi-safe-modules",
   "description": "Usagi Safe Modules for Safe Smart Accounts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "npx hardhat compile",
-    "deploy": "npx hardhat run scripts/deploy.js",
-    "deploy:localhost": "npx hardhat run scripts/deploy.js --network localhost"
+    "clean": "rimraf artifacts cache coverage coverage.json",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "build": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:localhost": "hardhat run scripts/deploy.js --network localhost"
   },
   "keywords": [
     "ethereum",
@@ -19,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.19.1"
+    "hardhat": "^2.19.1",
+    "rimraf": "^5.0.5"
   }
 }
