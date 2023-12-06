@@ -1,5 +1,22 @@
 {
-  "name": "hardhat-project",
+  "name": "usagi-safe-modules",
+  "description": "Usagi Safe Modules for Safe Smart Accounts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js",
+    "deploy:localhost": "npx hardhat run scripts/deploy.js --network localhost"
+  },
+  "keywords": [
+    "ethereum",
+    "smart-contracts",
+    "hardhat",
+    "wallet",
+    "solidity",
+    "gnosis-safe"
+  ],
+  "author": "Edison Lee <edisonlee@edisonlee55.com>",
+  "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "hardhat": "^2.19.1"
