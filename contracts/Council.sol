@@ -5,10 +5,10 @@ import {ISafe} from "./interfaces/ISafe.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Council is Ownable {
-    address public safe;
+    address public safeAccount;
 
-    constructor(address initialOwner, address _safe) Ownable(initialOwner) {
-        safe = _safe;
+    constructor(address initialOwner, address _safeAccount) Ownable(initialOwner) {
+        safeAccount = _safeAccount;
     }
 
     function execTransactionFromModule(
@@ -18,7 +18,7 @@ contract Council is Ownable {
         uint8 operation
     ) external onlyOwner returns (bool success) {
         return
-            ISafe(safe).execTransactionFromModule(to, value, data, operation);
+            ISafe(safeAccount).execTransactionFromModule(to, value, data, operation);
     }
 
     function execTransactionFromModuleReturnData(
@@ -28,7 +28,7 @@ contract Council is Ownable {
         uint8 operation
     ) external onlyOwner returns (bool success, bytes memory returnData) {
         return
-            ISafe(safe).execTransactionFromModuleReturnData(
+            ISafe(safeAccount).execTransactionFromModuleReturnData(
                 to,
                 value,
                 data,
@@ -41,17 +41,17 @@ contract Council is Ownable {
     //     bytes memory data,
     //     bytes memory signatures
     // ) external view {
-    //     ISafe(safe).checkSignatures(dataHash, data, signatures);
+    //     ISafe(safeAccount).checkSignatures(dataHash, data, signatures);
     // }
 
     // function domainSeparator() external view returns (bytes32) {
-    //     return ISafe(safe).domainSeparator();
+    //     return ISafe(safeAccount).domainSeparator();
     // }
 
     // function getModulesPaginated(
     //     address start,
     //     uint256 pageSize
     // ) external view returns (address[] memory array, address next) {
-    //     return ISafe(safe).getModulesPaginated(start, pageSize);
+    //     return ISafe(safeAccount).getModulesPaginated(start, pageSize);
     // }
 }
