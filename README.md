@@ -1,5 +1,10 @@
 # usagi-safe-modules
 
+## Install Submodule
+```bash
+$ git submodule update --init --recursive
+```
+
 ## Install Dependencies
 ```bash
 $ pnpm install

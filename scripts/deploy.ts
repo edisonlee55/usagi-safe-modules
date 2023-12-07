@@ -7,7 +7,7 @@ async function main() {
   const accounts = await ethers.getSigners();
 
   const ownerAddress = await accounts[0].getAddress();
-  const safeAddress = process.env.SAFE_ADDRESS;
+  const safeAddress = process.env.SAFE_ADDRESS!;
 
   console.log(`Deploying to network: ${network.name} (${network.chainId})`);
   console.log(`Owner address: ${ownerAddress}`);
