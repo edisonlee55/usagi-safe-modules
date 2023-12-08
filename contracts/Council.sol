@@ -1,13 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
-import {ISafe} from "./interfaces/ISafe.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+
+import {ISafe} from "./interfaces/ISafe.sol";
 
 contract Council is Ownable {
     address public safeAccount;
 
-    constructor(address initialOwner, address _safeAccount) Ownable(initialOwner) {
+    constructor(
+        address initialOwner,
+        address _safeAccount
+    ) Ownable(initialOwner) {
         safeAccount = _safeAccount;
     }
 
@@ -18,7 +22,12 @@ contract Council is Ownable {
         uint8 operation
     ) external onlyOwner returns (bool success) {
         return
-            ISafe(safeAccount).execTransactionFromModule(to, value, data, operation);
+            ISafe(safeAccount).execTransactionFromModule(
+                to,
+                value,
+                data,
+                operation
+            );
     }
 
     function execTransactionFromModuleReturnData(
