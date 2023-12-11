@@ -28,6 +28,7 @@
     "rimraf": "^5.0.5"
   },
   "dependencies": {
+    "@gnosis.pm/zodiac": "^3.4.2",
     "@openzeppelin/contracts": "^5.0.1",
     "@safe-global/protocol-kit": "^2.0.0",
     "@safe-global/safe-contracts": "1.4.1-build.0",
