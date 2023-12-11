@@ -8,8 +8,8 @@ import {SafeModule} from "./base/SafeModule.sol";
 contract Council is Ownable, SafeModule {
     constructor(
         address initialOwner,
-        address _safeAccount
-    ) Ownable(initialOwner) SafeModule(_safeAccount) {}
+        address safeAccount
+    ) Ownable(initialOwner) SafeModule(safeAccount) {}
 
     function send(
         address to,
