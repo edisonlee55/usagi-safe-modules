@@ -13,12 +13,26 @@ async function main() {
   console.log(`Owner address: ${ownerAddress}`);
   console.log(`Safe address: ${safeAddress}`);
 
-  const council = await ethers.deployContract("Council", [ownerAddress, safeAddress], {
+  const safeGovernance = await ethers.deployContract("SafeGovernance", [safeAddress, ownerAddress], {
     deterministicDeployment: process.env.DETERMINISTIC_DEPLOYMENT || false
   });
 
-  await council.waitForDeployment();
-  console.log(`Council deployed to: ${council.target}`);
+  await safeGovernance.waitForDeployment();
+  console.log(`SafeGovernance deployed to: ${safeGovernance.target}`);
+
+  const sendModule = await ethers.deployContract("SendModule", [safeAddress, safeGovernance.target], {
+    deterministicDeployment: process.env.DETERMINISTIC_DEPLOYMENT || false
+  });
+
+  await sendModule.waitForDeployment();
+  console.log(`SendModule deployed to: ${sendModule.target}`);
+
+  const ownableSendModule = await ethers.deployContract("OwnableSendModule", [safeAddress, ownerAddress], {
+    deterministicDeployment: process.env.DETERMINISTIC_DEPLOYMENT || false
+  });
+
+  await ownableSendModule.waitForDeployment();
+  console.log(`OwnableSendModule deployed to: ${ownableSendModule.target}`);
 };
 
 main().catch((error) => {

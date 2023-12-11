@@ -5,11 +5,11 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 import {SafeModule} from "./base/SafeModule.sol";
 
-contract Council is Ownable, SafeModule {
+contract OwnableSendModule is SafeModule, Ownable {
     constructor(
-        address initialOwner,
-        address safeAccount
-    ) Ownable(initialOwner) SafeModule(safeAccount) {}
+        address safeAccount,
+        address initialOwner
+    ) SafeModule(safeAccount) Ownable(initialOwner) {}
 
     function send(
         address to,
