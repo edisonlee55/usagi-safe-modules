@@ -1,13 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
-import {SafeModule} from "./SafeModule.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Council is SafeModule {
+import {SafeModule} from "./base/SafeModule.sol";
+
+contract Council is Ownable, SafeModule {
     constructor(
         address initialOwner,
         address _safeAccount
-    ) SafeModule(initialOwner, _safeAccount) {}
+    ) Ownable(initialOwner) SafeModule(_safeAccount) {}
 
     function send(
         address to,
