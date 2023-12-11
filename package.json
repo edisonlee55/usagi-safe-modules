@@ -8,7 +8,8 @@
     "build": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts --network",
     "deploy:safe": "hardhat run scripts/deploy_safe.ts --network",
-    "console": "hardhat console --network"
+    "console": "hardhat console --network",
+    "node": "hardhat node"
   },
   "keywords": [
     "ethereum",
@@ -28,6 +29,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.1",
     "@safe-global/protocol-kit": "^2.0.0",
+    "@safe-global/safe-contracts": "1.4.1-build.0",
     "@safe-global/safe-core-sdk-types": "^3.0.1",
     "dotenv": "^16.3.1"
   }

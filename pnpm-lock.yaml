@@ -11,6 +11,9 @@ dependencies:
   '@safe-global/protocol-kit':
     specifier: ^2.0.0
     version: 2.0.0
+  '@safe-global/safe-contracts':
+    specifier: 1.4.1-build.0
+    version: 1.4.1-build.0(ethers@6.9.0)
   '@safe-global/safe-core-sdk-types':
     specifier: ^3.0.1
     version: 3.0.1
@@ -878,6 +881,14 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /@safe-global/safe-contracts@1.4.1-build.0(ethers@6.9.0):
+    resolution: {integrity: sha512-TIpoKJtMqLcLFoid0cvpxo8YTcnRUj95MHvxzwgPbJPRONOckNS6ebgGyBBRDmnpxFh34IBpPUZ7JD+z2Cfbbg==}
+    peerDependencies:
+      ethers: 5.4.0
+    dependencies:
+      ethers: 6.9.0
     dev: false
 
   /@safe-global/safe-core-sdk-types@3.0.1:
