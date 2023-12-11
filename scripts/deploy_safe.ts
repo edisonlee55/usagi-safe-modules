@@ -22,14 +22,14 @@ async function main() {
     if (process.env.USE_SAFE_DEPLOYMENTS === "false") {
         const contractNetworks: ContractNetworksConfig = {
             [network.chainId]: {
-                safeSingletonAddress: process.env.SAFE_SINGLETON_ADDRESS,
-                safeProxyFactoryAddress: process.env.SAFE_PROXY_FACTORY_ADDRESS,
-                multiSendAddress: process.env.MULTI_SEND_ADDRESS,
-                multiSendCallOnlyAddress: process.env.MULTI_SEND_CALL_ONLY_ADDRESS,
-                fallbackHandlerAddress: process.env.FALLBACK_HANDLER_ADDRESS,
-                signMessageLibAddress: process.env.SIGN_MESSAGE_LIB_ADDRESS,
-                createCallAddress: process.env.CREATE_CALL_ADDRESS,
-                simulateTxAccessorAddress: process.env.SIMULATE_TX_ACCESSOR_ADDRESS
+                safeSingletonAddress: process.env.SAFE_SINGLETON_ADDRESS || "0x41675C099F32341bf84BFc5382aF534df5C7461a",
+                safeProxyFactoryAddress: process.env.SAFE_PROXY_FACTORY_ADDRESS || "0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67",
+                multiSendAddress: process.env.MULTI_SEND_ADDRESS || "0x38869bf66a61cF6bDB996A6aE40D5853Fd43B526",
+                multiSendCallOnlyAddress: process.env.MULTI_SEND_CALL_ONLY_ADDRESS || "0x9641d764fc13c8B624c04430C7356C1C7C8102e2",
+                fallbackHandlerAddress: process.env.FALLBACK_HANDLER_ADDRESS || "0xfd0732Dc9E303f09fCEf3a7388Ad10A83459Ec99",
+                signMessageLibAddress: process.env.SIGN_MESSAGE_LIB_ADDRESS || "0xd53cd0aB83D845Ac265BE939c57F53AD838012c9",
+                createCallAddress: process.env.CREATE_CALL_ADDRESS || "0x9b35Af71d77eaf8d7e40252370304687390A1A52",
+                simulateTxAccessorAddress: process.env.SIMULATE_TX_ACCESSOR_ADDRESS || "0x3d4BA2E0884aa488718476ca2FB8Efc291A46199"
             }
         };
 
