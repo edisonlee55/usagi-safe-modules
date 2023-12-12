@@ -4,19 +4,19 @@ pragma solidity ^0.8.22;
 import {SafeModule} from "./base/SafeModule.sol";
 import {ISafeGovernance} from "./interfaces/ISafeGovernance.sol";
 
-// interface IFeeToSetter {
-//     function setOwner(address owner_) external;
+interface IFeeToSetter {
+    function setOwner(address owner_) external;
 
-//     function setFeeToSetter(address feeToSetter_) external;
+    function setFeeToSetter(address feeToSetter_) external;
 
-//     function toggleFees(bool on) external;
-// }
+    function toggleFees(bool on) external;
+}
 
-// interface IFeeTo {
-//     function setOwner(address owner_) external;
+interface IFeeTo {
+    function setOwner(address owner_) external;
 
-//     function setFeeRecipient(address feeRecipient_) external;
-// }
+    function setFeeRecipient(address feeRecipient_) external;
+}
 
 contract UniswapV2Manager is SafeModule {
     address public safeGovernance;
@@ -50,7 +50,7 @@ contract UniswapV2Manager is SafeModule {
             execTransactionFromModule(
                 feeToSetter,
                 0,
-                abi.encodeWithSignature("setOwner(address)", owner_),
+                abi.encodeCall(IFeeToSetter.setOwner, (owner_)),
                 0
             );
     }
@@ -62,10 +62,7 @@ contract UniswapV2Manager is SafeModule {
             execTransactionFromModule(
                 feeToSetter,
                 0,
-                abi.encodeWithSignature(
-                    "setFeeToSetter(address)",
-                    feeToSetter_
-                ),
+                abi.encodeCall(IFeeToSetter.setFeeToSetter, (feeToSetter_)),
                 0
             );
     }
@@ -77,7 +74,7 @@ contract UniswapV2Manager is SafeModule {
             execTransactionFromModule(
                 feeToSetter,
                 0,
-                abi.encodeWithSignature("toggleFees(bool)", on),
+                abi.encodeCall(IFeeToSetter.toggleFees, (on)),
                 0
             );
     }
@@ -89,7 +86,7 @@ contract UniswapV2Manager is SafeModule {
             execTransactionFromModule(
                 feeTo,
                 0,
-                abi.encodeWithSignature("setOwner(address)", owner_),
+                abi.encodeCall(IFeeTo.setOwner, (owner_)),
                 0
             );
     }
@@ -101,10 +98,7 @@ contract UniswapV2Manager is SafeModule {
             execTransactionFromModule(
                 feeTo,
                 0,
-                abi.encodeWithSignature(
-                    "setFeeRecipient(address)",
-                    feeRecipient_
-                ),
+                abi.encodeCall(IFeeTo.setFeeRecipient, (feeRecipient_)),
                 0
             );
     }
