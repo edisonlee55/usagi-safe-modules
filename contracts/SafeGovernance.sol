@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
+import {Enum} from "@safe-global/safe-contracts/contracts/common/Enum.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 import {SafeModule} from "./base/SafeModule.sol";
@@ -15,7 +16,7 @@ contract SafeGovernance is SafeModule, Ownable {
         address to,
         uint256 value,
         bytes memory data,
-        uint8 operation
+        Enum.Operation operation
     ) external onlyOwner returns (bool success) {
         return execTransactionFromModule(to, value, data, operation);
     }
@@ -24,7 +25,7 @@ contract SafeGovernance is SafeModule, Ownable {
         address to,
         uint256 value,
         bytes memory data,
-        uint8 operation
+        Enum.Operation operation
     ) external onlyOwner returns (bool success, bytes memory returnData) {
         return execTransactionFromModuleReturnData(to, value, data, operation);
     }

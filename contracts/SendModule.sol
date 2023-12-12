@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
+import {Enum} from "@safe-global/safe-contracts/contracts/common/Enum.sol";
+
 import {SafeModule} from "./base/SafeModule.sol";
 import {ISafeGovernance} from "./interfaces/ISafeGovernance.sol";
 
@@ -26,6 +28,6 @@ contract SendModule is SafeModule {
         address to,
         uint256 value
     ) external onlyGovernanceOwner returns (bool success) {
-        return execTransactionFromModule(to, value, "0x", 0);
+        return execTransactionFromModule(to, value, "0x", Enum.Operation.Call);
     }
 }

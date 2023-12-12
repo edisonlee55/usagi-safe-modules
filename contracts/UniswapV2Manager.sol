@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
+import {Enum} from "@safe-global/safe-contracts/contracts/common/Enum.sol";
+
 import {SafeModule} from "./base/SafeModule.sol";
 import {ISafeGovernance} from "./interfaces/ISafeGovernance.sol";
 
@@ -51,7 +53,7 @@ contract UniswapV2Manager is SafeModule {
                 feeToSetter,
                 0,
                 abi.encodeCall(IFeeToSetter.setOwner, (owner_)),
-                0
+                Enum.Operation.Call
             );
     }
 
@@ -63,7 +65,7 @@ contract UniswapV2Manager is SafeModule {
                 feeToSetter,
                 0,
                 abi.encodeCall(IFeeToSetter.setFeeToSetter, (feeToSetter_)),
-                0
+                Enum.Operation.Call
             );
     }
 
@@ -75,7 +77,7 @@ contract UniswapV2Manager is SafeModule {
                 feeToSetter,
                 0,
                 abi.encodeCall(IFeeToSetter.toggleFees, (on)),
-                0
+                Enum.Operation.Call
             );
     }
 
@@ -87,7 +89,7 @@ contract UniswapV2Manager is SafeModule {
                 feeTo,
                 0,
                 abi.encodeCall(IFeeTo.setOwner, (owner_)),
-                0
+                Enum.Operation.Call
             );
     }
 
@@ -99,7 +101,7 @@ contract UniswapV2Manager is SafeModule {
                 feeTo,
                 0,
                 abi.encodeCall(IFeeTo.setFeeRecipient, (feeRecipient_)),
-                0
+                Enum.Operation.Call
             );
     }
 }

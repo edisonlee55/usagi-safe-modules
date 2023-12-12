@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
+import {Enum} from "@safe-global/safe-contracts/contracts/common/Enum.sol";
+
 interface ISafe {
     /**
      * @dev Allows a Module to execute a Safe transaction without any further confirmations.
@@ -13,7 +15,7 @@ interface ISafe {
         address to,
         uint256 value,
         bytes memory data,
-        uint8 operation
+        Enum.Operation operation
     ) external returns (bool success);
 
     /**
@@ -29,7 +31,7 @@ interface ISafe {
         address to,
         uint256 value,
         bytes memory data,
-        uint8 operation
+        Enum.Operation operation
     ) external returns (bool success, bytes memory returnData);
 
     /**

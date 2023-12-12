@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
+import {Enum} from "@safe-global/safe-contracts/contracts/common/Enum.sol";
+
 interface ISafeGovernance {
     /**
      * @dev Returns the address of the current owner.
@@ -18,7 +20,7 @@ interface ISafeGovernance {
         address to,
         uint256 value,
         bytes memory data,
-        uint8 operation
+        Enum.Operation operation
     ) external returns (bool success);
 
     /**
@@ -34,6 +36,6 @@ interface ISafeGovernance {
         address to,
         uint256 value,
         bytes memory data,
-        uint8 operation
+        Enum.Operation operation
     ) external returns (bool success, bytes memory returnData);
 }
